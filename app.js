@@ -2,8 +2,8 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
-const swaggerUi = require('swagger-ui-express');
 const openApiSpec = require('./src/docs/openapi');
+const swaggerPage = require('./src/docs/swaggerPage');
 const apiRoutes = require('./src/routes');
 const { notFoundHandler, errorHandler } = require('./src/middleware/errorHandler');
 
@@ -19,7 +19,9 @@ app.get('/', (_req, res) => {
 app.get('/api/docs.json', (_req, res) => {
   res.json(openApiSpec);
 });
-app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(openApiSpec));
+app.get(['/api/docs', '/api/docs/'], (_req, res) => {
+  res.type('html').send(swaggerPage());
+});
 app.use('/api', apiRoutes);
 
 app.use(notFoundHandler);

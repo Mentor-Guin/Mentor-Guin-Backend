@@ -19,8 +19,7 @@
     "@supabase/supabase-js": "^2.107.0",
     "cors": "^2.8.5",
     "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "swagger-ui-express": "^5.0.1"
+    "express": "^5.2.1"
   },
   "devDependencies": {
     "supertest": "^7.1.4"

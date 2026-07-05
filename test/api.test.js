@@ -17,6 +17,13 @@ test('GET /api/docs.json returns OpenAPI spec', async () => {
   assert.ok(response.body.paths['/health']);
 });
 
+test('GET /api/docs returns Swagger UI page', async () => {
+  const response = await request(app).get('/api/docs');
+  assert.equal(response.status, 200);
+  assert.match(response.text, /SwaggerUIBundle/);
+  assert.match(response.text, /\/api\/docs\.json/);
+});
+
 test('GET /api/lessons returns seeded YouTube lessons', async () => {
   const response = await request(app).get('/api/lessons');
   assert.equal(response.status, 200);
