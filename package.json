@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node service.js",
     "dev": "node --watch service.js",
+    "seed": "node scripts/seedSupabase.js",
     "test": "node --test test/api.test.js"
   },
   "engines": {
